@@ -1,18 +1,17 @@
-# 3rd
-#compare two number and output the large one
-class Comparision  
-def initialize(no1,no2)  
-@no1 = no1  
-@no2 = no2  
-end  
-def compare_no  
-@max = (@no1>@no2)? @no1:@no2  
-puts("Greater number is  : #{@max}")  
-end  
-end  
-puts("Enter 1st Number:")  
-no1 = gets.chomp  
-puts("Enter 2nd Number:")  
-no2 = gets.chomp  
-comparator = Comparision.new(no1,no2)  
-comparator.compare_no 
+import cv2 
+import numpy as np 
+# Read the image 
+img = cv2.imread("shadow.jpg", 1) 
+# Define the kernel 
+kernel = np.ones((5, 5), dtype="uint8") 
+# Perform erosion and dilation 
+img_erosion = cv2.erode(img, kernel, iterations=1) 
+img_dilation = cv2.dilate(img, kernel, iterations=1) 
+# Display the images 
+cv2.imshow("Input", img) 
+cv2.imshow("Erosion", img_erosion) 
+cv2.imshow("Dilation", img_dilation) 
+# Wait indefinitely until a key is pressed 
+cv2.waitKey(0) 
+# Destroy all windows 
+cv2.destroyAllWindows() 
